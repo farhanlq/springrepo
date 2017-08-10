@@ -12,7 +12,7 @@ public class PractiseHelloSpringApp {
 		System.out.println(swim.getDailyWorkout());
 		System.out.println(swim.getDailyFortune());
 		System.out.println(swim.getEmail());
-		System.out.println(swim.getCoach());
+		System.out.println(swim.getTeam());
 		context.close();
 
 	}
