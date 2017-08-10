@@ -1,6 +1,7 @@
 package com.demo.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -8,14 +9,18 @@ import org.springframework.stereotype.Component;
 public class SwimCoach implements Coach {
 
 	@Autowired
+	@Qualifier("randomFortuneService")
 	private FortuneService fortuneService;
-	
-	@Value("{buzz.email}")
+
+	@Value("${buzz.email}")
 	String email;
-	
-	@Value("{buzz.coach}")
-	String coach;
-	
+
+	@Value("${buzz.team}")
+	String team;
+
+	public SwimCoach() {
+	}
+
 	@Override
 	public String getDailyWorkout() {
 		// TODO Auto-generated method stub
@@ -35,11 +40,9 @@ public class SwimCoach implements Coach {
 		return email;
 	}
 
-	public String getCoach() {
-		return coach;
+	public String getTeam() {
+		return team;
 	}
 
-	
-	
-
 }
+
