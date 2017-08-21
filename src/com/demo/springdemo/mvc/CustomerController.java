@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CustomerController {
 
 	@InitBinder
-	public void initBinder(WebDataBinder dataBinder){
+	public void initBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-		dataBinder.registerCustomEditor(String.class,stringTrimmerEditor);
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
-	
+
 	@RequestMapping("/showForm")
 	public String showForm(Model theModel) {
 		theModel.addAttribute("customer", new Customer());
@@ -29,16 +29,19 @@ public class CustomerController {
 
 	@RequestMapping("/processForm")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult) {
-		System.out.println("Last Name is :"+theCustomer.getLastName());
+		System.out.println("Last Name is :" + theCustomer.getLastName());
 		
+		System.out.println("Binding Result: "+theBindingResult);
+		
+		System.out.println("\n\n\n\n");
+
+		System.out.println();
 		if (theBindingResult.hasErrors()) {
 			return "customer-form";
 		} else {
 			return "customer-confirmation";
 		}
-		
-		
+
 	}
-	
-	
+
 }
